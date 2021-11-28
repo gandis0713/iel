@@ -11,6 +11,9 @@ project(
 # set options.
 option(BUILD_TEST_SPEC "Test spec or not" OFF)
 
+# set compile options.
+set(CMAKE_CXX_STANDARD 17)
+
 # set variables.
 set(NAME_SPACE ${PROJECT_NAME})
 set(SRC_DIR src)
