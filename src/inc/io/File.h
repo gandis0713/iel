@@ -5,9 +5,9 @@
 #include <fstream>
 #include <memory>
 
-#include "../Compiler.h"
+#include "../../Compiler.h"
 
-_IEL_BEGIN_
+_IEL_NAMESPACE_BEGIN_
 
 class File {
   public:
@@ -41,6 +41,6 @@ class File {
     std::unique_ptr<std::fstream> mStream;
 };
 
-_IEL_END
+_IEL_NAMESPACE_END_
 
 #endif // _IEL_IO_FILE_H_

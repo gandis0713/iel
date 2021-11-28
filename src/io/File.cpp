@@ -1,6 +1,6 @@
 #include "../inc/io/File.h"
 
-_IEL_BEGIN_
+_IEL_NAMESPACE_BEGIN_
 
 File::File(const std::string& path, const Type type): 
   mFilePath(path), 
@@ -47,4 +47,4 @@ void File::close() {
 }
 
 
-_IEL_END
+_IEL_NAMESPACE_END_

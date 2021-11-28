@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
-SET (SRC_FILES    
+SET (SRC_FILES
+    main.cpp
     io/File.cpp 
     inc/io/File.h
     inc/std/Vector.h

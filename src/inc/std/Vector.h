@@ -1,14 +1,14 @@
 #ifndef _IEL_VECTOR_H_
 #define _IEL_VECTOR_H_
 
-#include "Compiler.h"
+#include "../../Compiler.h"
 
-_IEL_BEGIN_
+_IEL_NAMESPACE_BEGIN_
 
 class vector {
 
 };
 
-_IEL_END
+_IEL_NAMESPACE_END_
 
 #endif // _IEL_VECTOR_H_
