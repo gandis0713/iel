@@ -27,12 +27,14 @@ class File {
   public:
     File(const std::string& path, const Type type);
     File(const File& file) = delete;
+    File(File&& file) = delete;
     virtual ~File();
 
     Result open();
     void close();
   public:
     File& operator=(const File&) = delete;
+    File& operator=(File&&) = delete;
 
   private:
     std::string mFilePath;

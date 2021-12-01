@@ -1,9 +1,7 @@
 cmake_minimum_required(VERSION 3.12)
 
-SET (SRC_FILES
-    io/File.cpp 
-    inc/io/File.h
-    )
+
+file(GLOB_RECURSE SRC_FILES LIST_DIRECTORIES false *.h *.cpp)
 
 ADD_LIBRARY(${CMAKE_PROJECT_NAME} STATIC ${SRC_FILES})
 TARGET_LINK_LIBRARIES(${CMAKE_PROJECT_NAME})

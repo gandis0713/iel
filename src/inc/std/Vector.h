@@ -5,7 +5,7 @@
 
 _IEL_NAMESPACE_BEGIN_
 
-class vector {
+class Vector {
 
 };
 

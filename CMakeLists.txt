@@ -9,7 +9,7 @@ project(
   LANGUAGES CXX)
 
 # set options.
-option(BUILD_TEST_SPEC "Test spec or not" OFF)
+option(TEST_SPEC "Test spec or not" OFF)
 
 # set compile options.
 set(CMAKE_CXX_STANDARD 17)
@@ -18,7 +18,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(NAME_SPACE ${PROJECT_NAME})
 set(SRC_DIR src)
 set(EXTERNAL_DIR externals)
-if(BUILD_TEST_SPEC)
+if(TEST_SPEC)
   set(SPEC_DIR spec)
   set(GTEST_DIR ${EXTERNAL_DIR}/googletest)
 endif()
@@ -28,7 +28,7 @@ add_compile_definitions(_IEL_NAME_SPACE_=${NAME_SPACE})
 
 # set build project list
 add_subdirectory(${SRC_DIR})
-if(BUILD_TEST_SPEC)
+if(TEST_SPEC)
   add_subdirectory(${SPEC_DIR})
   add_subdirectory(${GTEST_DIR})
 endif()
