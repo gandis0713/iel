@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
 
+#include <memory>
+
 #include "../../src/inc/std/String.h"
 #define NS _IEL_NAME_SPACE_
 #define SPEC TEST
@@ -36,13 +38,9 @@ SPEC(string, copy_assignment) {
 SPEC(string, plus_assignment) {
     NS::String str1 = NS::String("1234");
     NS::String str2 = NS::String("abcd1234");
-    // NS::String str3 = str2 + str1;
+    NS::String str3 = str1 + str2;
 
-    std::cout << strlen(str1.c_str()) << std::endl;
-    std::cout << str1.c_str() << std::endl;
-    std::cout << str2.c_str() << std::endl;
-    // std::cout << str3.c_str() << std::endl;
-    // EXPECT_EQ (str2, str1);
+    EXPECT_EQ (str3, "1234abcd1234");
 }
 
 SPEC(string, strlen) {

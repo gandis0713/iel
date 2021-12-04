@@ -9,7 +9,7 @@ project(
   LANGUAGES CXX)
 
 # set options.
-option(TEST_SPEC "Test spec or not" OFF)
+option(TEST_SPEC "Test spec" OFF)
 
 # set compile options.
 set(CMAKE_CXX_STANDARD 17)

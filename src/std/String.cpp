@@ -14,10 +14,11 @@ String::String():
 
 String::String(const char* str):
   mSize(_IEL_NAME_SPACE_::strlen(str)),
-  mCapacity(this->mSize),
+  mCapacity(this->mSize + 1),
   mContent(std::make_unique<char[]>(this->mCapacity))
 {
   std::memcpy(mContent.get(), str, this->mCapacity);
+  mContent[this->mSize] = String::null_content;
 }
 
 String::String(const String& str):
@@ -28,14 +29,14 @@ String::String(const String& str):
   std::memcpy(mContent.get(), str.mContent.get(), this->mCapacity);
 }
 
-String::String(String&& str) noexcept 
-{
+// String::String(String&& str) noexcept 
+// {
 
-}
+// }
 
 String::~String() 
 {
-
+  
 }
 
 String& String::operator=(const String& str) 
@@ -44,18 +45,26 @@ String& String::operator=(const String& str)
   {
     this->mSize = str.mSize;
     this->mCapacity = str.mCapacity;
+    std::unique_ptr<char[]> content(new (std::nothrow) char[this->mCapacity]);
+    if(content == nullptr) 
+    {
+      std::cerr << "Failed to allocate memory string copy assignment." << std::endl;
+      return *this;
+    }
+
     if(this->mContent != nullptr) this->mContent.reset();
-    this->mContent = std::make_unique<char[]>(this->mCapacity);
-    std::memcpy(mContent.get(), str.mContent.get(), this->mCapacity);
+    this->mContent = std::move(content);
+
+    memcpy(mContent.get(), str.mContent.get(), this->mCapacity);
   }
 
   return *this;
 }
 
-String String::operator=(String&& str) noexcept
-{
-  return *this;
-}
+// String String::operator=(String&& str) noexcept
+// {
+//   return *this;
+// }
 
 bool String::operator==(const String& str) const
 {
@@ -109,9 +118,14 @@ String String::operator+(const String& strIn)
 
   String strOut;
   strOut.mSize = this->mSize + strIn.mSize;
-  strOut.mCapacity = this->mCapacity + strIn.mCapacity;
+  strOut.mCapacity = strOut.mSize + 1;
 
-  strOut.mContent = std::make_unique<char[]>(strOut.mCapacity);
+  strOut.mContent = std::unique_ptr<char[]>(new (std::nothrow) char[strOut.mCapacity]);
+  if(strOut.mContent == nullptr) 
+  {
+    std::cerr << "Failed to allocate memory for string content +." << std::endl;
+    return *this;
+  }
 
   size_t index = 0;
   while(index < this->mSize)
@@ -120,13 +134,13 @@ String String::operator+(const String& strIn)
     ++index;
   }
 
-  index = 0;
-  while(index < strIn.mSize)
+  while(index < strOut.mSize)
   {
-    strOut.mContent[index + this->mSize] = strIn.mContent[index];
+    strOut.mContent[index] = strIn.mContent[index - this->mSize];
     ++index;
   }
-  
+
+  strOut.mContent[strOut.mSize] = String::null_content;
   
   return strOut;
 }

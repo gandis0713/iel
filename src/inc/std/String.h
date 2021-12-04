@@ -25,18 +25,21 @@ public:
   String();
   String(const char* str);
   String(const String& str);
-  String(String&& str) noexcept;
+  // String(String&& str) noexcept;
   ~String();
 
-  _NO_DISCARD constexpr size_t size() { return this->mSize; }
-  _NO_DISCARD constexpr size_t capacity() { return this->mCapacity; }
-  const char* c_str() { return this->mContent.get(); }
-
   String& operator=(const String& str);
-  String operator=(String&& str) noexcept;
+  // String operator=(String&& str) noexcept;
   bool operator==(const String& str) const;
   bool operator!=(const String& str) const;
   String operator+(const String& str);
+public:
+  static constexpr char null_content = '\0';
+
+public:
+  _NO_DISCARD constexpr size_t size() { return this->mSize; }
+  _NO_DISCARD constexpr size_t capacity() { return this->mCapacity; }
+  const char* c_str() { return this->mContent.get(); }
 
 private:
   size_t mSize;
