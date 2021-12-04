@@ -9,16 +9,16 @@ String::String():
   mSize(0),
   mCapacity(0)
 {
-
+  
 }
 
 String::String(const char* str):
-  mSize(_IEL_NAME_SPACE_::strlen(str)),
+  mSize(IEL_NAME_SPACE::strlen(str)),
   mCapacity(this->mSize + 1),
   mContent(std::make_unique<char[]>(this->mCapacity))
 {
   std::memcpy(mContent.get(), str, this->mCapacity);
-  mContent[this->mSize] = String::null_content;
+  mContent[this->mSize] = String::kNullValue;
 }
 
 String::String(const String& str):
@@ -29,14 +29,29 @@ String::String(const String& str):
   std::memcpy(mContent.get(), str.mContent.get(), this->mCapacity);
 }
 
-// String::String(String&& str) noexcept 
-// {
-
-// }
+String::String(String&& str) noexcept:
+  mSize(str.mSize),
+  mCapacity(str.mCapacity),
+  mContent(std::move(str.mContent))
+{
+  
+}
 
 String::~String() 
 {
   
+}
+
+
+void* String::operator new(size_type size)
+{
+  return ::operator new(size);
+  // return malloc(size);
+}
+
+void String::operator delete(void* p)
+{
+  free(p);
 }
 
 String& String::operator=(const String& str) 
@@ -61,10 +76,18 @@ String& String::operator=(const String& str)
   return *this;
 }
 
-// String String::operator=(String&& str) noexcept
-// {
-//   return *this;
-// }
+String& String::operator=(String&& str) noexcept
+{
+  if(this != &str) 
+  {
+    this->mSize = str.mSize;
+    this->mCapacity = str.mCapacity;
+    if(this->mContent != nullptr) this->mContent.reset();
+    this->mContent = std::move(str.mContent);
+  }
+
+  return *this;
+}
 
 bool String::operator==(const String& str) const
 {
@@ -72,7 +95,7 @@ bool String::operator==(const String& str) const
 
   if(this->mSize != str.mSize) return false;
 
-  size_t index = 0;
+  size_type index = 0;
   while(index < this->mSize)
   {
     if(this->mContent[index] != str.mContent[index])
@@ -89,7 +112,7 @@ bool String::operator!=(const String& str) const
 {
   if(this->mSize != str.mSize) return true;
 
-  size_t index = 0;
+  size_type index = 0;
   while(index < this->mSize)
   {
     if(this->mContent[index] != str.mContent[index])
@@ -127,7 +150,7 @@ String String::operator+(const String& strIn)
     return *this;
   }
 
-  size_t index = 0;
+  size_type index = 0;
   while(index < this->mSize)
   {
     strOut.mContent[index] = this->mContent[index];
@@ -140,7 +163,7 @@ String String::operator+(const String& strIn)
     ++index;
   }
 
-  strOut.mContent[strOut.mSize] = String::null_content;
+  strOut.mContent[strOut.mSize] = String::kNullValue;
   
   return strOut;
 }

@@ -15,7 +15,6 @@ option(TEST_SPEC "Test spec" OFF)
 set(CMAKE_CXX_STANDARD 17)
 
 # set variables.
-set(NAME_SPACE ${PROJECT_NAME})
 set(SRC_DIR src)
 set(EXTERNAL_DIR externals)
 if(TEST_SPEC)
@@ -24,7 +23,8 @@ if(TEST_SPEC)
 endif()
 
 # set compile definitions.
-add_compile_definitions(_IEL_NAME_SPACE_=${NAME_SPACE})
+add_compile_definitions(IEL_NAME_SPACE=${PROJECT_NAME})
+add_compile_definitions(CPP_VERSION=${CMAKE_CXX_STANDARD})
 
 # set build project list
 add_subdirectory(${SRC_DIR})

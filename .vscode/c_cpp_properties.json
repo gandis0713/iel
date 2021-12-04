@@ -6,7 +6,8 @@
                 "${workspaceFolder}/**"
             ],
             "defines": [
-                "_IEL_NAME_SPACE_=iel"
+                "IEL_NAME_SPACE=iel",
+                "CPP_VERSION=17"
             ],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "gnu17",

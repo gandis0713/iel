@@ -5,10 +5,9 @@
 
 #include <memory>
 
-
 _IEL_NAMESPACE_BEGIN_
 
-constexpr size_t strlen(const char* str) 
+CONSTEXPR size_t strlen(const char* str) 
 {
   size_t len = 0;
 
@@ -20,31 +19,40 @@ constexpr size_t strlen(const char* str)
   return len;
 }
 
-class _NO_DISCARD String {
+class NODISCARD String {
+public:
+  using size_type = size_t;
+  using value_type = char;
+  using pointer = value_type*;
+  using const_pointer = const value_type*;
+
 public:
   String();
-  String(const char* str);
+  String(const value_type* str);
   String(const String& str);
-  // String(String&& str) noexcept;
+  String(String&& str) noexcept;
   ~String();
 
+  void* operator new(size_type size);
+  void operator delete(void* p);
   String& operator=(const String& str);
-  // String operator=(String&& str) noexcept;
+  String& operator=(String&& str) noexcept;
   bool operator==(const String& str) const;
   bool operator!=(const String& str) const;
   String operator+(const String& str);
 public:
-  static constexpr char null_content = '\0';
+  static CONSTEXPR value_type kNullValue = '\0';
 
 public:
-  _NO_DISCARD constexpr size_t size() { return this->mSize; }
-  _NO_DISCARD constexpr size_t capacity() { return this->mCapacity; }
-  const char* c_str() { return this->mContent.get(); }
+  NODISCARD CONSTEXPR size_type size() const { return this->mSize; }
+  NODISCARD CONSTEXPR size_type length() const { return this->mSize; }
+  NODISCARD CONSTEXPR size_type capacity() const { return this->mCapacity; }
+  NODISCARD const_pointer c_str() const { return this->mContent.get(); }
 
 private:
-  size_t mSize;
-  size_t mCapacity;
-  std::unique_ptr<char[]> mContent;
+  size_type mSize;
+  size_type mCapacity;
+  std::unique_ptr<value_type[]> mContent;
 
 };
 
