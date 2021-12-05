@@ -1,9 +1,9 @@
-#include "../inc/std/String.h"
+#include "../inc/std/string.h"
 #include <cstring>
 #include <limits>
 #include <iostream>
 
-_IEL_NAMESPACE_BEGIN_
+namespace IEL_NAME_SPACE {
 
 String::String():
   mSize(0),
@@ -168,4 +168,4 @@ String String::operator+(const String& strIn)
   return strOut;
 }
   
-_IEL_NAMESPACE_END_
+} // IEL_NAME_SPACE

@@ -1,6 +1,6 @@
-#include "../inc/io/File.h"
+#include "../inc/io/file.h"
 
-_IEL_NAMESPACE_BEGIN_
+namespace IEL_NAME_SPACE {
 
 File::File(const std::string& path, const Type type): 
   mFilePath(path), 
@@ -32,8 +32,8 @@ File::Result File::open() {
     mStream = std::make_unique<std::fstream>(mFilePath, std::ios::in);
     break;
     case Type::RW:
-    mStream = std::make_unique<std::fstream>(mFilePath, std::ios::in | std::ios::out);
     default:
+    mStream = std::make_unique<std::fstream>(mFilePath, std::ios::in | std::ios::out);
     break;
   }
 
@@ -47,4 +47,4 @@ void File::close() {
 }
 
 
-_IEL_NAMESPACE_END_
+} // IEL_NAME_SPACE

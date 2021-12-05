@@ -7,7 +7,7 @@
 
 #include "../../Compiler.h"
 
-_IEL_NAMESPACE_BEGIN_
+namespace IEL_NAME_SPACE {
 
 class File {
   public:
@@ -39,10 +39,9 @@ class File {
   private:
     std::string mFilePath;
     Type mType;
-
     std::unique_ptr<std::fstream> mStream;
 };
 
-_IEL_NAMESPACE_END_
+} // IEL_NAME_SPACE
 
 #endif // _IEL_IO_FILE_H_

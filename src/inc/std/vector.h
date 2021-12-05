@@ -3,12 +3,12 @@
 
 #include "../../Compiler.h"
 
-_IEL_NAMESPACE_BEGIN_
+namespace IEL_NAME_SPACE {
 
 class Vector {
 
 };
 
-_IEL_NAMESPACE_END_
+} // IEL_NAME_SPACE
 
 #endif // _IEL_VECTOR_H_

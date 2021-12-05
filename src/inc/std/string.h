@@ -4,8 +4,9 @@
 #include "../../Compiler.h"
 
 #include <memory>
+#include <iostream>
 
-_IEL_NAMESPACE_BEGIN_
+namespace IEL_NAME_SPACE {
 
 CONSTEXPR size_t strlen(const char* str) 
 {
@@ -56,6 +57,6 @@ private:
 
 };
 
-_IEL_NAMESPACE_END_
+} // IEL_NAME_SPACE
 
 #endif // _IEL_STRING_H_
