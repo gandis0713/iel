@@ -24,6 +24,9 @@ class NODISCARD String {
 public:
   using size_type = size_t;
   using value_type = char;
+  using ptr_diff_type = PTRDIFF_TYPE;
+  using reference = value_type&;
+  using const_reference = const value_type&;
   using pointer = value_type*;
   using const_pointer = const value_type*;
 
@@ -40,6 +43,7 @@ public:
   String& operator=(String&& str) noexcept;
   bool operator==(const String& str) const;
   bool operator!=(const String& str) const;
+  NODISCARD reference operator[](const ptr_diff_type diff) const { return *(this->mContent.get() + diff); }
   String operator+(const String& str);
 public:
   static CONSTEXPR value_type kNullValue = '\0';

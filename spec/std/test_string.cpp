@@ -51,6 +51,14 @@ TEST(spec_string, not_equal_operator) {
     EXPECT_NE (str, "123");
 }
 
+TEST(spec_string, index_operator) {
+    iel::String str = iel::String("1234");
+    EXPECT_EQ (str[0], '1');
+    EXPECT_EQ (str[1], '2');
+    EXPECT_EQ (str[2], '3');
+    EXPECT_EQ (str[3], '4');
+}
+
 TEST(spec_string, strlen) {
     const char* str1 = "abcd";
     EXPECT_EQ (iel::strlen(str1), strlen(str1));

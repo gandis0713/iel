@@ -13,5 +13,10 @@
 # define CONSTEXPR
 #endif
 
+#ifdef __PTRDIFF_TYPE__
+# define PTRDIFF_TYPE __PTRDIFF_TYPE__
+#else
+# define PTRDIFF_TYPE long int
+#endif
 
 #endif // _IEL_COMPILER_H_
