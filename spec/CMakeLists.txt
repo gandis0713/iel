@@ -11,4 +11,4 @@ endif()
 
 add_executable(${BINARY} ${TEST_SOURCES})
 add_test(NAME ${BINARY} COMMAND ${BINARY})
-target_link_libraries(${BINARY} PUBLIC ${CMAKE_PROJECT_NAME} gtest)
+target_link_libraries(${BINARY} PUBLIC ${IEL_PROJECT_NAME} gtest)

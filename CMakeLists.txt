@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.12)
 
 # initilize project.
-set(PROJECT_NAME iel)
+set(IEL_PROJECT_NAME iel)
 project(
-  ${PROJECT_NAME}
+  ${IEL_PROJECT_NAME}
   VERSION 0.1
   DESCRIPTION "Inefficient Library for c++"
   LANGUAGES CXX)
@@ -23,7 +23,7 @@ if(TEST_SPEC)
 endif()
 
 # set compile definitions.
-add_compile_definitions(IEL_NAME_SPACE=${PROJECT_NAME})
+add_compile_definitions(IEL_NAME_SPACE=${IEL_PROJECT_NAME})
 add_compile_definitions(CPP_VERSION=${CMAKE_CXX_STANDARD})
 
 # set build project list
