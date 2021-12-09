@@ -1,6 +1,6 @@
 #include "../inc/io/file.h"
 
-namespace IEL_NAME_SPACE {
+namespace iel {
 
 File::File(const std::string& path, const Type type): 
   mFilePath(path), 
@@ -47,4 +47,4 @@ void File::close() {
 }
 
 
-} // IEL_NAME_SPACE
+} // namespace iel

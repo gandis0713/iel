@@ -6,7 +6,7 @@
 #include <memory>
 #include <iostream>
 
-namespace IEL_NAME_SPACE {
+namespace iel {
 
 CONSTEXPR size_t strlen(const char* str) 
 {
@@ -61,6 +61,6 @@ private:
 
 };
 
-} // IEL_NAME_SPACE
+} // namespace iel
 
 #endif // _IEL_STRING_H_

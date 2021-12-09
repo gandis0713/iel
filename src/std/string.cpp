@@ -3,7 +3,7 @@
 #include <limits>
 #include <iostream>
 
-namespace IEL_NAME_SPACE {
+namespace iel {
 
 String::String():
   mSize(0),
@@ -13,7 +13,7 @@ String::String():
 }
 
 String::String(const char* str):
-  mSize(IEL_NAME_SPACE::strlen(str)),
+  mSize(iel::strlen(str)),
   mCapacity(this->mSize + 1),
   mContent(std::make_unique<char[]>(this->mCapacity))
 {
@@ -168,4 +168,4 @@ String String::operator+(const String& strIn)
   return strOut;
 }
   
-} // IEL_NAME_SPACE
+} // namespace iel

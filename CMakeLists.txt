@@ -23,7 +23,6 @@ if(TEST_SPEC)
 endif()
 
 # set compile definitions.
-add_compile_definitions(IEL_NAME_SPACE=${IEL_PROJECT_NAME})
 add_compile_definitions(CPP_VERSION=${CMAKE_CXX_STANDARD})
 
 # set build project list

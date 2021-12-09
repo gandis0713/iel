@@ -2,8 +2,6 @@
 
 #include "../../src/inc/std/string.h"
 
-namespace iel = IEL_NAME_SPACE;
-
 TEST(spec_string, empty_constructor) {
     iel::String str = iel::String();
     EXPECT_EQ (str, "");
