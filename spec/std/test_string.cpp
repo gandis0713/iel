@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-#include "../../src/inc/std/string.h"
+#include "std/string.h"
 
 TEST(spec_string, empty_constructor) {
     iel::String str = iel::String();
